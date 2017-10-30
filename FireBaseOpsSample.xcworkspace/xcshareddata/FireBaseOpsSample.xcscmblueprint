@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "03D461E3D9A52E772770EFB605E5A642BA829497",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "03D461E3D9A52E772770EFB605E5A642BA829497" : 9223372036854775807,
+    "B5F47C96A6DA8AFAF1974F2837BF1299D84421F2" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7F6E9C52-567A-463A-BBFB-04589342B9B1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "03D461E3D9A52E772770EFB605E5A642BA829497" : "FireBaseOpsSample\/",
+    "B5F47C96A6DA8AFAF1974F2837BF1299D84421F2" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FireBaseOpsSample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FireBaseOpsSample.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tauk\/FireBaseOpsSample.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "03D461E3D9A52E772770EFB605E5A642BA829497"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tauk\/swift3-examples.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B5F47C96A6DA8AFAF1974F2837BF1299D84421F2"
+    }
+  ]
+}

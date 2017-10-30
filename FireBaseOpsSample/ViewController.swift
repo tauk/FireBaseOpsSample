@@ -11,6 +11,8 @@ import Firebase
 import FirebaseDatabase
 
 class ViewController: UIViewController {
+    
+    var userExists =  false
 
     @IBOutlet weak var tfUserName: UITextField!
     
@@ -21,8 +23,13 @@ class ViewController: UIViewController {
     @IBAction func findUser(_ sender: Any) {
         let userName = tfUserName.text
         
+        if (userName?.isEmpty)!  {
+            showAlert(titleText: "User Error", messageText: "Enter user name to find")
+            return;
+        }
+        
         //get the reference to the database
-        let ref = FIRDatabase.database().reference()
+        let ref = Database.database().reference()
         
         //using the database ref get the reference to userName which is the child of the users child
         let userNameRef = ref.child("users").child(userName!)
@@ -44,10 +51,11 @@ class ViewController: UIViewController {
     
     @IBAction func showAllUsers(_ sender: Any) {
         //get the database reference to child "users"
-        let usersRef = FIRDatabase.database().reference().child("users")
+        let usersRef = Database.database().reference().child("users")
         
         var data = ""
         
+        //use observe to get all child nodes under users child node
         usersRef.observe(.childAdded, with: {
             (snapshot) in
             
@@ -69,22 +77,32 @@ class ViewController: UIViewController {
         let userName = tfUserName.text
         let email = tfEmail.text
         
+        //validate textfields
+        if (userName?.isEmpty)! || (email?.isEmpty)! {
+            showAlert(titleText: "User Error", messageText: "Enter user name and email")
+            return;
+        }
+        
         //get the reference to the database
-        let ref = FIRDatabase.database().reference()
+        let ref = Database.database().reference()
         
         //get a reference all the way to the user name to check if that user name already exists
-        let userNameRef = ref.child("users").child(userName!)
+        let usersRef = ref.child("users")
+      
+        let queryRef = usersRef.queryOrdered(byChild: "username").queryEqual(toValue : userName)
         
-        
-        userNameRef.observeSingleEvent(of: .value, with: {
+        //check if the user name already exists - using closure
+        queryRef.observeSingleEvent(of: .value, with: {
             (snapshot) in  
             
             if(snapshot.exists()) {
                 self.showAlert(titleText: "Error!", messageText: "Username \(userName!) already exists")
                 return
             }
+            
         })
         
+        let userNameRef = usersRef.child(userName!)
         //add a new user to the users child using the setValue() method
         userNameRef.setValue(["username":userName, "email":email])
         
@@ -96,8 +114,17 @@ class ViewController: UIViewController {
         let userName = tfUserName.text
         let email = tfEmail.text
         
+        if (userName?.isEmpty)! || (email?.isEmpty)! {
+            showAlert(titleText: "Update Error", messageText: "Enter user name and email")
+            return;
+        }
         
-        let ref = FIRDatabase.database().reference()
+        if (checkUserExists(userNameValue: userName!)) {
+            showAlert(titleText: "Update Error", messageText: "User \(userName ?? "username") does not exist!")
+            return;
+        }
+        
+        let ref = Database.database().reference()
         
         //update the child of the child node using updateChildValues()
         ref.child("users").child(userName!).updateChildValues(["username":userName!, "email":email!])
@@ -108,8 +135,13 @@ class ViewController: UIViewController {
     @IBAction func deleteUser(_ sender: Any) {
         let userName = tfUserName.text
         
+        if (checkUserExists(userNameValue: userName!)) {
+            showAlert(titleText: "Delete Error", messageText: "User \(userName ?? "username") does not exist!")
+            return;
+        }
+        
         //get a reference to the database
-        let ref = FIRDatabase.database().reference()
+        let ref = Database.database().reference()
         
         //delete the child node for the user by using  the removeValue() method
         ref.child("users").child(userName!).removeValue()
@@ -125,6 +157,21 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //function to check if a user exits under the users child node
+    private func checkUserExists(userNameValue:String) -> Bool {
+       
+        let usersRef = Database.database().reference().child("users")
+        
+        let queryRef = usersRef.queryOrdered(byChild: "username").queryEqual(toValue : userNameValue)
+        
+        //check if the user name already exists - using closure
+        queryRef.observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            self.userExists = snapshot.exists()
+        })
+        return userExists
     }
     
     //reusable method to show alert box

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "374E619DE638415E20F054D97A78784B"
+               BlueprintIdentifier = "F22CAB8EC6F9B4BCC3954BFFA4936850"
                BuildableName = "Pods_FireBaseOpsSample.framework"
                BlueprintName = "Pods-FireBaseOpsSample"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "374E619DE638415E20F054D97A78784B"
+            BlueprintIdentifier = "F22CAB8EC6F9B4BCC3954BFFA4936850"
             BuildableName = "Pods_FireBaseOpsSample.framework"
             BlueprintName = "Pods-FireBaseOpsSample"
             ReferencedContainer = "container:Pods.xcodeproj">
